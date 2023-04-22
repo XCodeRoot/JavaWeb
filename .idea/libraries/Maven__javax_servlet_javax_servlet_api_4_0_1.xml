@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Maven: javax.servlet:javax.servlet-api:4.0.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-sources.jar!/" />
+      <root url="file://D:/JavaWeb学习/apache-tomcat-8.5.87-src/java" />
+    </SOURCES>
+  </library>
+</component>
