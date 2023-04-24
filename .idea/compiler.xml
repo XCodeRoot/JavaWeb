@@ -9,12 +9,14 @@
         <module name="_06_Web" />
         <module name="_05_Web" />
         <module name="_07_servlet" />
+        <module name="book" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="_05_Web" target="1.8" />
       <module name="_06_Web" target="1.8" />
       <module name="_07_servlet" target="1.8" />
+      <module name="book" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

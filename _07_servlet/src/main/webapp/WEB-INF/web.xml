@@ -5,7 +5,7 @@
          version="4.0">
     <servlet>
         <servlet-name>RequestAPIServlet</servlet-name>
-        <servlet-class>com.atguigu.selvlet.RequestAPIServlet</servlet-class>
+        <servlet-class>com.atguigu.servlet.RequestAPIServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
@@ -16,10 +16,65 @@
 <!--    ================================================================-->
     <servlet>
         <servlet-name>ParameterServlet</servlet-name>
-        <servlet-class>com.atguigu.selvlet.ParameterServlet</servlet-class>
+        <servlet-class>com.atguigu.servlet.ParameterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ParameterServlet</servlet-name>
         <url-pattern>/parameterServlet</url-pattern>
+    </servlet-mapping>
+<!--===================Servlet1==============================-->
+    <servlet>
+        <servlet-name>Servlet1</servlet-name>
+        <servlet-class>com.atguigu.servlet.Servlet1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet1</servlet-name>
+        <url-pattern>/servlet1</url-pattern>
+    </servlet-mapping>
+<!--    ==================Servlet2==========================-->
+    <servlet>
+        <servlet-name>Servlet2</servlet-name>
+        <servlet-class>com.atguigu.servlet.Servlet2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet2</servlet-name>
+        <url-pattern>/servlet2</url-pattern>
+    </servlet-mapping>
+<!--=========================================-->
+    <servlet>
+        <servlet-name>ForwardC</servlet-name>
+        <servlet-class>com.atguigu.servlet.ForwardC</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ForwardC</servlet-name>
+        <url-pattern>/forwardC</url-pattern>
+    </servlet-mapping>
+<!--    ====================================-->
+    <servlet>
+        <servlet-name>ResponseIOServlet</servlet-name>
+        <servlet-class>com.atguigu.servlet.ResponseIOServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ResponseIOServlet</servlet-name>
+        <url-pattern>/responseIOServlet</url-pattern>
+    </servlet-mapping>
+    <!--    =========================Response1==================================================-->
+    <servlet>
+        <servlet-name>Response1</servlet-name>
+        <servlet-class>com.atguigu.servlet.Response1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Response1</servlet-name>
+        <url-pattern>/response1</url-pattern>
+    </servlet-mapping>
+    <!--    =========================Response2===============================================-->
+    <servlet>
+        <servlet-name>Response2</servlet-name>
+        <servlet-class>com.atguigu.servlet.Response2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Response2</servlet-name>
+        <url-pattern>/response2</url-pattern>
     </servlet-mapping>
 </web-app>
