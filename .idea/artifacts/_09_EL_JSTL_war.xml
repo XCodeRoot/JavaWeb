@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="_09_EL_JSTL:war">
+    <output-path>$PROJECT_DIR$/_09_EL_JSTL/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>_09_EL_JSTL</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="_09_EL_JSTL-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="_09_EL_JSTL:war exploded" />
+    </root>
+  </artifact>
+</component>

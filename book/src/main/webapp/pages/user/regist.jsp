@@ -1,12 +1,13 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>尚硅谷会员注册页面</title>
-<!--	base标签,用于固定相对路径跳转的结果	-->
-		<base href="http://localhost:8080/book/">
-		<link type="text/css" rel="stylesheet" href="static/css/style.css" >
-		<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+
+		<%--	静态包含 base标签/css样式/jQuery文件	--%>
+		<%@include file="/pages/common/head.jsp"%>
+
 		<script type="text/javascript">
 			// 页面加载完成之后
 			$(function () {
@@ -109,13 +110,19 @@
 						<div class="login_box">
 							<div class="tit">
 								<h1>注册尚硅谷会员</h1>
-								<span class="errorMsg"></span>
+								<span class="errorMsg">
+									<%=request.getAttribute("msg")==null?"":request.getAttribute("msg")%>
+								</span>
 							</div>
 							<div class="form">
-								<form action="registServlet" method="post">
+								<form action="userServlet" method="post">
+
+									<input type="hidden" name="action" value="regist">
+
 									<label>用户名称：</label>
 									<input class="itxt" type="text" placeholder="请输入用户名"
-										   autocomplete="off" tabindex="1" name="username" id="username" />
+										   autocomplete="off" tabindex="1" name="username" id="username"
+											value="<%=request.getAttribute("username")==null?"":request.getAttribute("username")%>"/>
 									<br />
 									<br />
 									<label>用户密码：</label>
@@ -130,7 +137,8 @@
 									<br />
 									<label>电子邮件：</label>
 									<input class="itxt" type="text" placeholder="请输入邮箱地址"
-										   autocomplete="off" tabindex="1" name="email" id="email" />
+										   autocomplete="off" tabindex="1" name="email" id="email"
+										   value="<%=request.getAttribute("email")==null?"":request.getAttribute("email")%>"	/>
 									<br />
 									<br />
 									<label>验证码：</label>
@@ -146,10 +154,7 @@
 					</div>
 				</div>
 			</div>
-		<div id="bottom">
-			<span>
-				尚硅谷书城.Copyright &copy;2015
-			</span>
-		</div>
+		<%-- 静态包含 页脚内容	--%>
+		<%@include file="/pages/common/footer.jsp"%>
 	</body>
 </html>
