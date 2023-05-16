@@ -4,6 +4,8 @@ import com.atguigu.pojo.User;
 import com.atguigu.service.UserService;
 import com.atguigu.service.impl.UserServiceImpl;
 import com.atguigu.test.UserServletTest;
+import com.atguigu.utils.WebUtils;
+import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +24,7 @@ public class UserServlet extends BaseServlet  {
 
 
     /**
-     *  登录的方法
+     *  登录功能
      * @param req
      * @param resp
      * @throws ServletException
@@ -56,7 +58,7 @@ public class UserServlet extends BaseServlet  {
     }
 
     /**
-     *  注册的方法
+     *  注册功能
      * @param req
      * @param resp
      * @throws ServletException
@@ -69,6 +71,11 @@ public class UserServlet extends BaseServlet  {
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         String code = req.getParameter("code");
+
+
+        User user= WebUtils.copyParamTOBean(req.getParameterMap(),new User());
+
+
 //            2.检查验证码是否正确 ( 先把验证码写死了 : abcde
         if ("abcde".equalsIgnoreCase(code)){// 这个是忽略大小写的 equals 比较
 //               正确
