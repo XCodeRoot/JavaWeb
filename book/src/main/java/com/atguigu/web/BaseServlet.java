@@ -9,6 +9,11 @@ import java.lang.reflect.Method;
 
 public  abstract class  BaseServlet extends HttpServlet {
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req,resp);
+    }
+
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action=req.getParameter("action");
         //获取action业务 鉴别字符串,获取相应的业务 方法反射对象

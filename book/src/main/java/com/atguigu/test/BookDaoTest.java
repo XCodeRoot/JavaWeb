@@ -22,6 +22,7 @@ public class BookDaoTest {
 
     @Test
     public void deleteBookById() {
+        bookDao.deleteBookById(21);
     }
 
     @Test
@@ -32,9 +33,13 @@ public class BookDaoTest {
 
     @Test
     public void queryBookById() {
+        System.out.println(bookDao.queryBookById(21));;
     }
 
     @Test
     public void queryBooks() {
+        for (Book queryBook : bookDao.queryBooks()) {
+            System.out.println(queryBook);
+        }
     }
 }
