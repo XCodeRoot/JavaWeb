@@ -7,6 +7,28 @@
 <title>图书管理</title>
 	<%--	静态包含 base标签/css样式/jQuery文件	--%>
 	<%@include file="/pages/common/head.jsp"%></head>
+<script type="text/javascript">
+	$(function (){
+		//给删除的a标签 绑定单击事件,	用于确定删除
+		$("a.deleteClass").click(function (){
+			//在事件的function()函数中,有一个this对象,这个this对象,是对当前正在响应事件的dom对象
+			/*
+				confirm是确认提示框函数
+				参数是它的内容
+				有两个按钮一个是确认一个是取消
+					返回true表示 点了,确认,返回false表示取消
+			 */
+
+			return  confirm("你确定要删除["+ $(this).parent().parent().find("td:first").text() +"]?");
+
+			//return false//阻止元素的默认行为==不提交请求
+
+
+
+		})
+	})
+
+</script>
 <body>
 	
 	<div id="header">
@@ -36,8 +58,8 @@
 					<td>${book.author}</td>
 					<td>${book.sales}</td>
 					<td>${book.stock}</td>
-					<td><a href="book_edit.jsp">修改</a></td>
-					<td><a href="#">删除</a></td>
+					<td><a href="manager/bookServlet?action=getBook&id=${book.id}&method=update">修改</a></td>
+					<td><a class="deleteClass" href="manager/bookServlet?action=delete&id=${book.id}">删除</a></td>
 				</tr>
 
 			</c:forEach>
@@ -50,7 +72,7 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><a href="pages/manager/book_edit.jsp">添加图书</a></td>
+				<td><a href="pages/manager/book_edit.jsp?method=add">添加图书</a></td>
 			</tr>	
 		</table>
 	</div>

@@ -28,4 +28,20 @@ public class WebUtils {
         return bean;
     }
 
+    /**
+     *  将字符串转为int类型
+     *
+     * @param strInt 接收传来的 字符串
+     * @param defaultValue 默认值 (int)
+     * @return 转成功就是 返回转换后的int值 ,失败 则返回 默认值
+     */
+    public static int parseInt(String strInt,int defaultValue){
+        try {
+            return Integer.parseInt(strInt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return defaultValue;
+    }
+
 }

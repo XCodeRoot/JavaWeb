@@ -19,7 +19,7 @@ public class BookServlet extends BaseServlet{
 
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.获取请求参数 , 封装成 Book 对象
-        Book book = WebUtils.copyParamTOBean(req.getParameterMap(), new Book());
+        Book book = WebUtils.copyParamTOBean(req.getParameterMap(), new Book());//调用WebUtils工具类
         //2.调用BookServlet.add()方法 , 保存图书
         bookService.addBook(book);
         //3.请求重定向 到 图书列表 页面  /manager/bookServlet?action=list
@@ -28,11 +28,35 @@ public class BookServlet extends BaseServlet{
     }
 
     protected void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1.获取请求参数id,图书编号
+        int id = WebUtils.parseInt(req.getParameter("id"), 0);
+        //2.调用bookService.deleteBookById(); 删除图书
+        bookService.deleteBookById(id);
+        //3.重定向 回图书管理页面
+        //       /manager/bookServlet?action=list
+        resp.sendRedirect(req.getContextPath()+ "/manager/bookServlet?action=list");
 
     }
 
-    protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+    protected void getBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1.获取请求参数  id = 图书编号
+        int id = WebUtils.parseInt(req.getParameter("id"), 0);
+        //2.调用 bookService.queryBookById() 查询图书
+        Book book = bookService.queryBookById(id);
+        //3.保存图书到Request域中
+        req.setAttribute("book",book);
+        //4.请求转发到 /pages/manager/book_edit.jsp
+        req.getRequestDispatcher("/pages/manager/book_edit.jsp").forward(req,resp);
+    }
+
+    protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1.获取请求参数 , 封装成Book对象
+        Book book = WebUtils.copyParamTOBean(req.getParameterMap(), new Book());
+        //2.调用bookService.updateBook(),将修改好的数据保存到数据库中
+        bookService.updateBook(book);
+        //3.重定向回 图书管理页面 list那个
+        resp.sendRedirect(req.getContextPath()+"/manager/bookServlet?action=list");
     }
 
     protected void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -40,7 +64,7 @@ public class BookServlet extends BaseServlet{
         List<Book> books = bookService.queryBooks();
         //2.把全部图书 保存到Request域
         req.setAttribute("books",books);
-        //3.请求转发到 /pages/manager/book_manager.jsp
+        //3.请求转发到 /pages/manager/book_edit.jsp
         req.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(req,resp);
     }
 }
