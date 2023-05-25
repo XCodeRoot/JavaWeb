@@ -16,6 +16,8 @@
             + request.getContextPath()
             + "/"
             ;
+
+    pageContext.setAttribute("basePath",basePath);
 %>
 <!--	base标签,用于固定相对路径跳转的结果	-->
 <base href="<%=basePath%>">

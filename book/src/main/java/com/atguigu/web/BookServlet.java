@@ -1,6 +1,7 @@
 package com.atguigu.web;
 
 import com.atguigu.pojo.Book;
+import com.atguigu.pojo.Page;
 import com.atguigu.service.BookService;
 import com.atguigu.service.impl.BookServiceImpl;
 import com.atguigu.utils.WebUtils;
@@ -16,6 +17,26 @@ public class BookServlet extends BaseServlet{
     //还是 接口的引用执行 实现了该接口的类的对象
     //要和数据库交互,需要访问Dao层,但web层不能直接访问dao层,需要先通过访问service层来访问dao层
     private BookService bookService=new BookServiceImpl();
+
+    /**
+     *  处理分页 业务
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1.获取请求参数 pageNo,pageSize
+        int pageNo=WebUtils.parseInt(req.getParameter("pageNo"),1);
+        int pageSize=WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+        //2.调用bookService.page(pageNo,pageSize) :page对象
+        Page<Book> page= bookService.page(pageNo,pageSize);
+        //3.保存page对象到Request域中
+        req.setAttribute("page",page);
+        //4.请求转发到 /pages/manager/book_manager.jsp
+        req.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(req,resp);
+    }
 
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.获取请求参数 , 封装成 Book 对象
