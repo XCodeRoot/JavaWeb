@@ -32,6 +32,10 @@ public class BookServlet extends BaseServlet{
         int pageSize=WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
         //2.调用bookService.page(pageNo,pageSize) :page对象
         Page<Book> page= bookService.page(pageNo,pageSize);
+
+        page.setUrl("manager/bookServlet?action=page");
+
+
         //3.保存page对象到Request域中
         req.setAttribute("page",page);
         //4.请求转发到 /pages/manager/book_manager.jsp
@@ -39,12 +43,15 @@ public class BookServlet extends BaseServlet{
     }
 
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int pageNo=WebUtils.parseInt(req.getParameter("pageNo"),0);
+        pageNo+=1;
+
         //1.获取请求参数 , 封装成 Book 对象
         Book book = WebUtils.copyParamTOBean(req.getParameterMap(), new Book());//调用WebUtils工具类
         //2.调用BookServlet.add()方法 , 保存图书
         bookService.addBook(book);
         //3.请求重定向 到 图书列表 页面  /manager/bookServlet?action=list
-        resp.sendRedirect(req.getContextPath()+"/manager/bookServlet?action=list");
+        resp.sendRedirect(req.getContextPath()+"/manager/bookServlet?action=page&pageNo="+pageNo);
 
     }
 
@@ -55,7 +62,7 @@ public class BookServlet extends BaseServlet{
         bookService.deleteBookById(id);
         //3.重定向 回图书管理页面
         //       /manager/bookServlet?action=list
-        resp.sendRedirect(req.getContextPath()+ "/manager/bookServlet?action=list");
+        resp.sendRedirect(req.getContextPath()+ "/manager/bookServlet?action=page&pageNo="+req.getParameter("pageNo"));
 
     }
 
@@ -77,7 +84,7 @@ public class BookServlet extends BaseServlet{
         //2.调用bookService.updateBook(),将修改好的数据保存到数据库中
         bookService.updateBook(book);
         //3.重定向回 图书管理页面 list那个
-        resp.sendRedirect(req.getContextPath()+"/manager/bookServlet?action=list");
+        resp.sendRedirect(req.getContextPath()+"/manager/bookServlet?action=page&pageNo="+req.getParameter("pageNo"));
     }
 
     protected void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

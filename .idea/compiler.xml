@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="_09_EL_JSTL" />
+        <module name="_13_cookie_session" />
         <module name="_06_Web" />
         <module name="_05_Web" />
         <module name="_07_servlet" />
@@ -18,6 +19,7 @@
       <module name="_06_Web" target="1.8" />
       <module name="_07_servlet" target="1.8" />
       <module name="_09_EL_JSTL" target="1.8" />
+      <module name="_13_cookie_session" target="1.8" />
       <module name="book" target="1.8" />
     </bytecodeTargetLevel>
   </component>

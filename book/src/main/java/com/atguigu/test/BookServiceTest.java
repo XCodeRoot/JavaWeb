@@ -50,5 +50,8 @@ public class BookServiceTest {
         System.out.println(bookService.page(1, Page.PAGE_SIZE));
     }
 
-
+    @Test
+    public void pageByPrice(){
+        System.out.println(bookService.pageByPrice(1, Page.PAGE_SIZE,10,50));
+    }
 }

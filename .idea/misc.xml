@@ -5,6 +5,7 @@
     <file type="web" url="file://$PROJECT_DIR$/_06_Web" />
     <file type="web" url="file://$PROJECT_DIR$/_07_servlet" />
     <file type="web" url="file://$PROJECT_DIR$/_09_EL_JSTL" />
+    <file type="web" url="file://$PROJECT_DIR$/_13_cookie_session" />
     <file type="web" url="file://$PROJECT_DIR$/book" />
   </component>
   <component name="MavenProjectsManager">
@@ -15,6 +16,7 @@
         <option value="$PROJECT_DIR$/_07_servlet/pom.xml" />
         <option value="$PROJECT_DIR$/book/pom.xml" />
         <option value="$PROJECT_DIR$/_09_EL_JSTL/pom.xml" />
+        <option value="$PROJECT_DIR$/_13_cookie_session/pom.xml" />
       </list>
     </option>
   </component>

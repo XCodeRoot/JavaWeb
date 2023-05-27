@@ -9,5 +9,5 @@
 <div>
     <a href="manager/bookServlet?action=page">图书管理</a>
     <a href="order_manager.jsp">订单管理</a>
-    <a href="../../index.jsp">返回商城</a>
+    <a href="index.jsp">返回商城</a>
 </div>

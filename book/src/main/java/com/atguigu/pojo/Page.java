@@ -12,7 +12,7 @@ public class Page<T> {
 
 
 
-    public static final  Integer PAGE_SIZE=2;//当前页数量(容量
+    public static final  Integer PAGE_SIZE=4;//当前页数量(容量
 
 
     private Integer pageNo;//当前页码
@@ -21,6 +21,15 @@ public class Page<T> {
     private Integer pageTotalCount;//总记录数
     private List<T> items;//当前页数据
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    private String url;//分页条的请求地址
     public Integer getPageNo() {
         return pageNo;
     }
@@ -76,6 +85,7 @@ public class Page<T> {
                 ", pageSize=" + pageSize +
                 ", pageTotalCount=" + pageTotalCount +
                 ", items=" + items +
+                ", url='" + url + '\'' +
                 '}';
     }
 }
