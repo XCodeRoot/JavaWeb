@@ -21,14 +21,14 @@
 	<div style="float: left;">
 		<ul>
 			<li><a href="cookieServlet?action=createCookie" target="target">Cookie的创建</a></li>
-			<li><a href="" target="target">Cookie的获取</a></li>
-			<li><a href="" target="target">Cookie值的修改</a></li>
+			<li><a href="cookieServlet?action=getCookie" target="target">Cookie的获取</a></li>
+			<li><a href="cookieServlet?action=updateCookie" target="target">Cookie值的修改</a></li>
 			<li>Cookie的存活周期</li>
 			<li>
 				<ul>
-					<li><a href="" target="target">Cookie的默认存活时间（会话）</a></li>
-					<li><a href="" target="target">Cookie立即删除</a></li>
-					<li><a href="" target="target">Cookie存活3600秒（1小时）</a></li>
+					<li><a href="cookieServlet?action=defaultLife" target="target">Cookie的默认存活时间（会话）</a></li>
+					<li><a href="cookieServlet?action=deleteNow" target="target">Cookie立即删除</a></li>
+					<li><a href="cookieServlet?action=life3600" target="target">Cookie存活3600秒（1小时）</a></li>
 				</ul>
 			</li>
 			<li><a href="" target="target">Cookie的路径设置</a></li>

@@ -66,7 +66,7 @@
 
 			</c:forEach>
 
-			
+
 			<tr>
 				<td></td>
 				<td></td>
@@ -75,7 +75,7 @@
 				<td></td>
 				<td></td>
 				<td><a href="pages/manager/book_edit.jsp?method=add&pageNo=${requestScope.page.pageTotal}">添加图书</a></td>
-			</tr>	
+			</tr>
 		</table>
 
 		<%--  静态包含 分页条	--%>

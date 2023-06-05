@@ -7,6 +7,7 @@
     <file type="web" url="file://$PROJECT_DIR$/_09_EL_JSTL" />
     <file type="web" url="file://$PROJECT_DIR$/_13_cookie_session" />
     <file type="web" url="file://$PROJECT_DIR$/book" />
+    <file type="web" url="file://$PROJECT_DIR$/vehicle_rent" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -17,6 +18,7 @@
         <option value="$PROJECT_DIR$/book/pom.xml" />
         <option value="$PROJECT_DIR$/_09_EL_JSTL/pom.xml" />
         <option value="$PROJECT_DIR$/_13_cookie_session/pom.xml" />
+        <option value="$PROJECT_DIR$/vehicle_rent/pom.xml" />
       </list>
     </option>
   </component>

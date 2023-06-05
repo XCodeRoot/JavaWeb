@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="vehicle_rent:war">
+    <output-path>$PROJECT_DIR$/vehicle_rent/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>vehicle_rent</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="vehicle_rent-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="vehicle_rent:war exploded" />
+    </root>
+  </artifact>
+</component>

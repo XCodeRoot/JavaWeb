@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/_09_EL_JSTL/_09_EL_JSTL.iml" filepath="$PROJECT_DIR$/_09_EL_JSTL/_09_EL_JSTL.iml" />
       <module fileurl="file://$PROJECT_DIR$/_13_cookie_session/_13_cookie_session.iml" filepath="$PROJECT_DIR$/_13_cookie_session/_13_cookie_session.iml" />
       <module fileurl="file://$PROJECT_DIR$/book/book.iml" filepath="$PROJECT_DIR$/book/book.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vehicle_rent/vehicle_rent.iml" filepath="$PROJECT_DIR$/vehicle_rent/vehicle_rent.iml" />
     </modules>
   </component>
 </project>
