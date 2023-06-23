@@ -35,6 +35,7 @@ public class BookServlet extends BaseServlet{
 
         page.setUrl("manager/bookServlet?action=page");
 
+        //page.serUrl("manager/bookServlet?action=page");
 
         //3.保存page对象到Request域中
         req.setAttribute("page",page);

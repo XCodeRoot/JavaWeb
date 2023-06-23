@@ -11,6 +11,14 @@ import java.io.IOException;
 public class CookieServlet extends BaseServlet {
 
 
+    protected void testPath(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Cookie cookie=new Cookie("path1","path1");
+        //  req.getContextPath() 获取工程路径
+        cookie.setPath(req.getContextPath()+"/abc");// ===>>> 设置地址:    /工程路径/abc
+        resp.addCookie(cookie);
+        resp.getWriter().write("创建了一个带有Path路径的Cookie");
+    }
+
     /**存活一小时的cookie
      *
      * @param req
@@ -78,6 +86,7 @@ public class CookieServlet extends BaseServlet {
 //        resp.getWriter().write("key1的Cookie修改好了");
 
         //2.先找到需要的Cookie ,再修改
+        //传入待查找的cookie的key 和 cookie集合 然后找到了就用新的value覆盖旧的value
         Cookie cookie=CookieUtils.findCookie("key2",req.getCookies());
         if(cookie!=null){
             cookie.setValue("newValue2");
