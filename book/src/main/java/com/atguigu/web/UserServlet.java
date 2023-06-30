@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
+
 public class UserServlet extends BaseServlet  {
 
     // 接口的引用 = 实现了该接口的类的对象
@@ -52,6 +54,8 @@ public class UserServlet extends BaseServlet  {
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req,resp);
         }else {
 //             成功
+            //保存用户登录的信息
+            req.getSession().setAttribute("user",loginUser);//这里的loginUser是上面创建过的User对象
 //                跳转到登录成功页面 login_success.jsp
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req,resp);
         }
@@ -65,7 +69,12 @@ public class UserServlet extends BaseServlet  {
      * @throws IOException
      */
     protected void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-//
+        //获取key 为 KAPTCHA_SESSION_KEY常量 的Session的value
+        String  token = (String) req.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+        //立即删除这个Session
+        req.getSession().removeAttribute(token);
+
+
 //            1.获取请求参数
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -73,11 +82,12 @@ public class UserServlet extends BaseServlet  {
         String code = req.getParameter("code");
 
 
+
         User user= WebUtils.copyParamTOBean(req.getParameterMap(),new User());
 
 
 //            2.检查验证码是否正确 ( 先把验证码写死了 : abcde
-        if ("abcde".equalsIgnoreCase(code)){// 这个是忽略大小写的 equals 比较
+        if (token!=null&&token.equalsIgnoreCase(code)){// 这个是忽略大小写的 equals 比较
 //               正确
 //                   3.检查用户名是否可用
             if(userService.existsUsername(username)){
@@ -115,6 +125,21 @@ public class UserServlet extends BaseServlet  {
         }
     }
 
+
+    /** 注销
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //注销已有Session
+        req.getSession().invalidate();
+        //重定向到首页, 因为重定向是两次不同请求,访问两次服务器, 实现更新 数据 刷新页面的作用
+        resp.sendRedirect(req.getContextPath());
+
+    }
 
 
 
