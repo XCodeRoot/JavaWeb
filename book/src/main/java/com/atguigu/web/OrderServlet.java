@@ -2,6 +2,7 @@ package com.atguigu.web;
 
 import com.atguigu.pojo.Cart;
 import com.atguigu.pojo.Order;
+import com.atguigu.pojo.OrderItem;
 import com.atguigu.pojo.User;
 import com.atguigu.service.OrderService;
 import com.atguigu.service.impl.OrderServiceImpl;
@@ -58,5 +59,23 @@ public class OrderServlet extends BookServlet{
         req.setAttribute("orders",orders);
         //请求转发
         req.getRequestDispatcher("/pages/order/order.jsp").forward(req,resp);
+    }
+
+    /** 查看订单详情 , 把订单项全部列上去
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void showOrderDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //从请求的地址中获取orderId
+        String orderId = req.getParameter("orderId");
+        //从数据库获取 orderItems
+        List<OrderItem> orderItems=orderService.showOrderDetail(orderId);
+        //保存到req域
+        req.setAttribute("orderItems",orderItems);
+        //请求转发
+        req.getRequestDispatcher("/pages/order/order_detail.jsp").forward(req,resp);
     }
 }

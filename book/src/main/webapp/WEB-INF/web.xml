@@ -61,4 +61,15 @@
         <servlet-name>OrderServlet</servlet-name>
         <url-pattern>/orderServlet</url-pattern>
     </servlet-mapping>
+
+    <filter>
+        <filter-name>ManagerFilter</filter-name>
+        <filter-class>com.atguigu.filter.ManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerFilter</filter-name>
+        <url-pattern>/pages/manager/*</url-pattern>
+        <!--不但要拦截 页面资源 ,还要拦截 Servlet访问路径-->
+        <url-pattern>/manager/bookServlet</url-pattern>
+    </filter-mapping>
 </web-app>

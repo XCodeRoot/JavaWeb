@@ -39,7 +39,7 @@
 					<td>${order.createTime}</td>
 					<td>${order.price}</td>
 					<td>${order.status}</td>
-					<td><a href="#">查看详情</a></td>
+					<td><a href="orderServlet?action=showOrderDetail&orderId=${order.orderId}">查看详情</a></td>
 				</tr>
 			</c:forEach>
 
