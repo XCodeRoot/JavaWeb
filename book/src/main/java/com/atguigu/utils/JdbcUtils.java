@@ -39,6 +39,7 @@ import java.util.Properties;
 public class JdbcUtils {
 
     private static DataSource dataSource=null;//创建连接池对象
+    private static ThreadLocal<Connection> conns=new ThreadLocal<Connection>();
 
     static {
         //创建 配置文件对象
@@ -64,16 +65,67 @@ public class JdbcUtils {
     }
 
     public static Connection getConnection()  {
-        Connection connection=null;
-        //获取连接
-        try {
-            connection=dataSource.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        Connection conn=conns.get();
+        if (conn==null){
+            try {
+                conn=dataSource.getConnection();//如果当前线程中没有连接,则从连接池里取一个连接
+                conns.set(conn);//保存到ThreadLocal线程本地变量中 , 供jdbc使用
+                conn.setAutoCommit(false);//将  事 务  设置为手动管理
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        return connection;
+        return conn;
     }
 
+    /** 提交事务 并 关闭连接
+     *
+     */
+    public static void commitAndClose() {
+        Connection connection = conns.get();
+        if(connection!=null){
+            try {
+                connection.commit();//先 尝试提交
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    connection.close();//无论有没有错误 , 都关闭连接
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        //一定要执行 remove 操作 ,因为tomcat服务器 底层使用了线程池
+        conns.remove();
+
+    }
+
+    /** 回滚事务 并 关闭连接
+     *
+     */
+    public static void rollbackAndClose() {
+        Connection connection = conns.get();
+        if(connection!=null){
+            try {
+                connection.rollback();// 回滚
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    connection.close();//无论有没有错误 , 都关闭连接
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        //一定要执行 remove 操作 ,因为tomcat服务器 底层使用了线程池
+        conns.remove();
+    }
+
+
+
+    /*
     public static void close(Connection connection){
         if(connection!=null){
             try {
@@ -84,6 +136,7 @@ public class JdbcUtils {
         }
 
     }
+     */
 
 
 }

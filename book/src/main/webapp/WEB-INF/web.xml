@@ -62,6 +62,8 @@
         <url-pattern>/orderServlet</url-pattern>
     </servlet-mapping>
 
+
+    <!-- 后台资源过滤器   -->
     <filter>
         <filter-name>ManagerFilter</filter-name>
         <filter-class>com.atguigu.filter.ManagerFilter</filter-class>
@@ -72,4 +74,29 @@
         <!--不但要拦截 页面资源 ,还要拦截 Servlet访问路径-->
         <url-pattern>/manager/bookServlet</url-pattern>
     </filter-mapping>
+
+    <!-- 事务过滤器 , 用于给所有Service方法 提供 Commit和Rollback 事务 -->
+    <filter>
+        <filter-name>TransactionFilter</filter-name>
+        <filter-class>com.atguigu.filter.TransactionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TransactionFilter</filter-name>
+        <!--  简单粗暴的 杠星 , 表示拦截所有资源请求,没错就是你工程里的所有资源  -->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <error-page>
+        <!--  错误类型代码  -->
+        <error-code>500</error-code>
+        <!-- 错误页面存放地址  -->
+        <location>/pages/error/error500.jsp</location>
+    </error-page>
+
+    <error-page>
+        <!--  错误类型代码  -->
+        <error-code>404</error-code>
+        <!-- 错误页面存放地址  -->
+        <location>/pages/error/error404.jsp</location>
+    </error-page>
 </web-app>

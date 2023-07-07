@@ -35,12 +35,9 @@ public abstract class BaseDao {
             //4.发送SQL语句,并返回影响行数
             return queryRunner.update(connection,sql,args);
         } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            //5.回收资源
-            JdbcUtils.close(connection);
+            e.printStackTrace();//捕获异常
+            throw new RuntimeException(e);//抛出异常 给调用者 , 层层往上抛 , 这样上层才能回滚事务
         }
-        return -1;
     }
 
     /**
@@ -61,13 +58,10 @@ public abstract class BaseDao {
             //3.占位符赋值
             //4.发送SQL语句 并返回 结果集
             return queryRunner.query(connection,sql,new BeanHandler<T>(type),args);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            //5.回收连接
-            JdbcUtils.close(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();//捕获异常
+            throw new RuntimeException(e);//抛出异常 给调用者 , 层层往上抛 , 这样上层才能回滚事务
         }
-        return null;
     }
 
 
@@ -89,12 +83,10 @@ public abstract class BaseDao {
             //3.占位符赋值
             //4.执行SQL语句 , 返回结果集
             return queryRunner.query(connection,sql,new BeanListHandler<T>(type),args);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            JdbcUtils.close(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();//捕获异常
+            throw new RuntimeException(e);//抛出异常 给调用者 , 层层往上抛 , 这样上层才能回滚事务
         }
-        return null;
     }
 
     /**
@@ -111,11 +103,9 @@ public abstract class BaseDao {
             //3.占位符赋值
             //4.执行SQL语句,返回结果集
             return queryRunner.query(connection,sql,new ScalarHandler(),args);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            JdbcUtils.close(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();//捕获异常
+            throw new RuntimeException(e);//抛出异常 给调用者 , 层层往上抛 , 这样上层才能回滚事务
         }
-        return null;
     }
 }
