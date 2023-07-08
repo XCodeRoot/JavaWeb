@@ -12,6 +12,7 @@
         <module name="book" />
         <module name="_09_EL_JSTL" />
         <module name="_13_cookie_session" />
+        <module name="_16_json_ajax_i18n" />
         <module name="vehicle_rent" />
       </profile>
     </annotationProcessing>
@@ -21,6 +22,7 @@
       <module name="_07_servlet" target="1.8" />
       <module name="_09_EL_JSTL" target="1.8" />
       <module name="_13_cookie_session" target="1.8" />
+      <module name="_16_json_ajax_i18n" target="1.8" />
       <module name="book" target="1.8" />
       <module name="vehicle_rent" target="1.8" />
     </bytecodeTargetLevel>

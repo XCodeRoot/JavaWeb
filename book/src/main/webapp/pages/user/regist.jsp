@@ -12,6 +12,29 @@
 			// 页面加载完成之后
 			$(function () {
 
+				//判断用户名是否重复
+				$("#username").blur(function (){//失焦
+					//1.获取用户名
+					var username=this.value;
+					$.getJSON("http://localhost:8080/book/userServlet",
+							"action=ajaxExistsUsername&username="+username,
+							function (data){
+								console.log(data)//可以在f12里的 控制台 查看此时是false还是true
+
+								//existsUsername是之前在Servlet里保存的结果,因为是json,所以用key点运算,取出里面的value
+								if (data.existsUsername) {
+									$("span.errorMsg").text("用户名已存在！");
+								} else {
+									$("span.errorMsg").text("用户名可用！");
+								}
+							}
+					)
+
+				});
+
+
+
+
 				//给验证码的图片 绑定单击事件
 				$("#code_img").click(function (){//这里的单击事件,就是操作验证码图片
 					//this指代这个验证码图片的img标签
@@ -19,8 +42,6 @@
 					this.src="${basePath}kaptcha.jpg?d=" +new Date();
 
 				});
-
-
 
 
 				// 给注册绑定单击事件

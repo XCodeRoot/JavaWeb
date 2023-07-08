@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="_16_json_ajax_i18n:war">
+    <output-path>$PROJECT_DIR$/_16_json_ajax_i18n/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>_16_json_ajax_i18n</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="_16_json_ajax_i18n-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="_16_json_ajax_i18n:war exploded" />
+    </root>
+  </artifact>
+</component>

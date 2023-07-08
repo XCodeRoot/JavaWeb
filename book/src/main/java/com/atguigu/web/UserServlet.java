@@ -5,6 +5,7 @@ import com.atguigu.service.UserService;
 import com.atguigu.service.impl.UserServiceImpl;
 import com.atguigu.test.UserServletTest;
 import com.atguigu.utils.WebUtils;
+import com.google.gson.Gson;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
@@ -24,6 +27,20 @@ public class UserServlet extends BaseServlet  {
     private UserService userService=new UserServiceImpl();
 
 
+
+    protected void ajaxExistsUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String username = req.getParameter("username");
+        //判断 用户名是否重复
+        boolean existsUsername = userService.existsUsername(username);
+        //把返回的结果封装成Map对象
+        Map<String,Object> resultMap=new HashMap<>();
+        resultMap.put("existsUsername",existsUsername);
+        //Map 转成json字符串 (之前学的就是这个
+        Gson gson=new Gson();
+        String json = gson.toJson(resultMap);
+        //响应流中 输出
+        resp.getWriter().write(json);
+    }
 
     /**
      *  登录功能

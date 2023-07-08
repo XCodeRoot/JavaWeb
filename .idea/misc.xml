@@ -6,6 +6,7 @@
     <file type="web" url="file://$PROJECT_DIR$/_07_servlet" />
     <file type="web" url="file://$PROJECT_DIR$/_09_EL_JSTL" />
     <file type="web" url="file://$PROJECT_DIR$/_13_cookie_session" />
+    <file type="web" url="file://$PROJECT_DIR$/_16_json_ajax_i18n" />
     <file type="web" url="file://$PROJECT_DIR$/book" />
     <file type="web" url="file://$PROJECT_DIR$/vehicle_rent" />
   </component>
@@ -19,6 +20,7 @@
         <option value="$PROJECT_DIR$/_09_EL_JSTL/pom.xml" />
         <option value="$PROJECT_DIR$/_13_cookie_session/pom.xml" />
         <option value="$PROJECT_DIR$/vehicle_rent/pom.xml" />
+        <option value="$PROJECT_DIR$/_16_json_ajax_i18n/pom.xml" />
       </list>
     </option>
   </component>
