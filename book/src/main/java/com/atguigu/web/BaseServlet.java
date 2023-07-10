@@ -17,6 +17,8 @@ public  abstract class  BaseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //在获取参数前 , 校准编码
         req.setCharacterEncoding("UTF-8");
+        //解决响应的中文乱码
+        resp.setContentType("text/html;charset=UTF-8");
 
         String action=req.getParameter("action");
         //获取action业务 鉴别字符串,获取相应的业务 方法反射对象
