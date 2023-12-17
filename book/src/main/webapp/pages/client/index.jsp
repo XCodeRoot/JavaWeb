@@ -38,7 +38,7 @@
 <body>
 	
 	<div id="header">
-			<img class="logo_img" alt="" src="static/img/logo.gif" >
+			<img class="logo_img" alt="" src="" >
 			<span class="wel_word">网上书城</span>
 			<div>
 				<%-- 如果没登录,则显示登录注册按钮	--%>
@@ -48,7 +48,7 @@
 				</c:if>
 				<%-- 如果登录了,则不用显示登录注册按钮	--%>
 				<c:if test="${not empty sessionScope.user}">
-					<span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临尚硅谷书城</span>
+					<span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临书城</span>
 					<a href="orderServlet?action=showMyOrders">我的订单</a>
 					<a href="userServlet?action=logout">注销</a>&nbsp;&nbsp;
 				</c:if>

@@ -45,7 +45,7 @@
 <body>
 
 	<div id="header">
-			<img class="logo_img" alt="" src="static/img/logo.gif" >
+			<img class="logo_img" alt="" src="" >
 			<span class="wel_word">购物车</span>
 
 		<%--静态包含 登录成功的菜单	--%>

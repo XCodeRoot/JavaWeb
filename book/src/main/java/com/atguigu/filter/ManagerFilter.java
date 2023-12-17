@@ -1,5 +1,7 @@
 package com.atguigu.filter;
 
+import com.alibaba.druid.filter.FilterChain;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +14,7 @@ public class ManagerFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, javax.servlet.FilterChain chain) throws IOException, ServletException {
         //将servletRequest 强制转换 成 HttpServletRequest类型
         HttpServletRequest httpServletRequest= (HttpServletRequest) request;
         //因为只有HttpServletRequest 才能 获取到 Session对象
@@ -24,6 +26,8 @@ public class ManagerFilter implements Filter {
             chain.doFilter(request,response);
         }
     }
+
+
 
 
 
